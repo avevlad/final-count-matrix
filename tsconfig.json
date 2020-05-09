@@ -1,0 +1,10 @@
+{
+  "ts-node": {
+    "transpileOnly": true
+  },
+  "compilerOptions": {
+    "skipLibCheck": true
+    // "esModuleInterop": true
+  },
+  "include": ["task2/**/*"]
+}
