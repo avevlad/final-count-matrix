@@ -34,7 +34,13 @@ import { promises as fs } from "fs";
     }
   }
 
-  console.table(result);
-  const csvStr = await csv.stringify(result);
+  const finalResult = result.sort((a, b) => b.length - a.length);
+
+  console.table(finalResult);
+
+  const csvStr = await csv.stringify(finalResult, {
+    delimiter: ";",
+    quoted_empty: true,
+  });
   await fs.writeFile(`task2/data/${filename}-result.csv`, csvStr);
 })();
