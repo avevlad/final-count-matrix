@@ -26,7 +26,9 @@ async function csvToJson<T>(
 }
 
 async function compare(a_file_name: string, b_file_name: string) {
-  let res = [];
+  let header = ["miR", a_file_name, b_file_name];
+
+  let res: any[] = [header];
   let a = await csvToJson<Row>(a_file_name, true);
   let b = await csvToJson<Row>(b_file_name, true);
   let all = a.concat(b);
@@ -37,6 +39,15 @@ async function compare(a_file_name: string, b_file_name: string) {
   let a_negative = a.filter(([__, v]) => parseFloat(v) < 0).map(([__]) => __);
   let b_positive = b.filter(([__, v]) => parseFloat(v) > 0).map(([__]) => __);
   let b_negative = b.filter(([__, v]) => parseFloat(v) < 0).map(([__]) => __);
+
+  function findValue(arr: Row[], mir: string) {
+    let res = arr.filter((__) => __[0] === mir);
+    if (res.length === 0) {
+      return null;
+    }
+
+    return parseFloat(res[0][1]);
+  }
 
   // console.log("a_positive:", a_positive);
   // console.log("a_negative:", a_negative);
@@ -60,31 +71,22 @@ async function compare(a_file_name: string, b_file_name: string) {
 
   for (let index = 0; index < diff_mir.length; index++) {
     const element = diff_mir[index];
-    let [pos, neg] = all
-      .filter(([__]) => __ === element)
-      .map((__) => parseFloat(__[1].replace(",", ".")).toFixed(2));
+    let a_file_res = findValue(a, element);
+    let b_file_res = findValue(b, element);
 
-    res.push([element, "up", "down", pos, neg]);
+    res.push([element, a_file_res, b_file_res]);
   }
 
   for (let index = 0; index < not_common_list.length; index++) {
     const [mir, v] = not_common_list[index];
-    let value = parseFloat(v.replace(",", "."));
+    let a_file_res = findValue(a, mir);
+    let b_file_res = findValue(b, mir);
 
-    let pos = value > 0;
-    let neg = value < 0;
-
-    res.push([
-      mir,
-      pos ? "up" : "",
-      neg ? "down" : "",
-      (pos && value.toFixed(2)) || "",
-      (neg && value.toFixed(2)) || "",
-    ]);
+    res.push([mir, a_file_res || "null", b_file_res || "null"]);
   }
 
   const csvStr = await csv.stringify(res, {
-    delimiter: ";",
+    delimiter: "\t",
     quoted_empty: true,
   });
 
