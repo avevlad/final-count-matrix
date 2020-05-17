@@ -1,50 +1,43 @@
 import * as csv from "async-csv";
 import { promises as fs } from "fs";
 
-async function compare() {
-  const filename = "down";
-  const rawMap = {};
-  const result = [];
-  const csvString = await fs.readFile(`task2/data/${filename}.csv`, "utf-8");
-  const rows = await csv.parse(csvString, {
-    delimiter: ";",
+async function csvToJson(file_name: string, ignore_header: boolean = false) {
+  const csvString = await fs.readFile(`task3/data/${file_name}.csv`, "utf-8");
+  const rows: any[] = await csv.parse(csvString, {
+    delimiter: "\t",
   });
-  const header = rows[0];
 
-  for (let index = 1; index < rows.length; index++) {
-    const element = rows[index];
-    console.log("element", element);
-    for (let j = 0; j < element.length; j++) {
-      const _j = element[j];
-      if (_j === "") {
-        continue;
-      }
-      if (!rawMap[_j]) {
-        rawMap[_j] = [];
-      }
-
-      rawMap[_j] = rawMap[_j].concat([header[j]]);
-    }
+  if (ignore_header) {
+    return rows.filter((__, i) => i !== 0);
   }
 
-  for (const key in rawMap) {
-    if (rawMap.hasOwnProperty(key)) {
-      const element = rawMap[key];
-      result.push([key].concat(element));
-    }
-  }
+  return rows;
+}
+async function compare(a_file_name: string, b_file_name: string) {
+  let a = await csvToJson(a_file_name, true);
+  let b = await csvToJson(b_file_name, true);
+  let all = a.concat(b);
+  let a_mir = a.map(([__]) => __);
+  let b_mir = b.map(([__]) => __);
+  let a_positive = a.filter(([__, v]) => parseFloat(v) > 0).map(([__]) => __);
+  let a_negative = a.filter(([__, v]) => parseFloat(v) < 0).map(([__]) => __);
+  let b_positive = b.filter(([__, v]) => parseFloat(v) > 0).map(([__]) => __);
+  let b_negative = b.filter(([__, v]) => parseFloat(v) < 0).map(([__]) => __);
 
-  const finalResult = result.sort((a, b) => b.length - a.length);
+  // console.log("a_positive:", a_positive);
+  // console.log("a_negative:", a_negative);
 
-  // console.table(finalResult);
+  // console.log("b_positive:", b_positive);
+  // console.log("b_negative:", b_negative);
+  // let diff_pos = a_positive.filter((__) => b_positive.includes(__));
+  // let diff_neg = a_negative.filter((__) => b_negative.includes(__));
 
-  const csvStr = await csv.stringify(finalResult, {
-    delimiter: ";",
-    quoted_empty: true,
-  });
-  await fs.writeFile(`task2/data/${filename}-result.csv`, csvStr);
+  let diff_mir = a_mir.filter((__) => b_mir.includes(__));
+  console.log("diff_mir:", diff_mir);
+  console.log("diff_mir:", diff_mir);
 }
 
 (async () => {
-  // compare('')
+  // compare("Del997_WT", "WT_MF");
+  compare("Del1338_WT", "WT_MF");
 })();

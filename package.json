@@ -4,7 +4,9 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "ts_node_dev": "ts-node-dev --watch --respawn --transpileOnly --clear task2/go.ts",
+    "debug": "cross-env TZ=UTC NODE_ENV=development tsnd --inspect --respawn task3/go.ts",
+    "tas3_dev": "ts-node-dev --watch --respawn --transpileOnly --clear task3/go.ts",
+    "tas2_dev": "ts-node-dev --watch --respawn --transpileOnly --clear task2/go.ts",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon task2/go.js\"",
     "task2_run": "nodemon --watch 'task2/**/*.ts' --exec 'ts-node --transpile-only' task2/go.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async-csv": "^2.1.3"
+    "async-csv": "^2.1.3",
+    "cross-env": "^7.0.2"
   },
   "devDependencies": {
     "@types/node": "^13.13.4",
