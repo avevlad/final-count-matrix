@@ -1,9 +1,8 @@
 import * as csv from "async-csv";
 import { promises as fs } from "fs";
 
-(async () => {
+async function compare() {
   const filename = "down";
-  // console.
   const rawMap = {};
   const result = [];
   const csvString = await fs.readFile(`task2/data/${filename}.csv`, "utf-8");
@@ -44,4 +43,8 @@ import { promises as fs } from "fs";
     quoted_empty: true,
   });
   await fs.writeFile(`task2/data/${filename}-result.csv`, csvStr);
+}
+
+(async () => {
+  // compare('')
 })();
