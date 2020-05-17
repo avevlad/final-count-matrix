@@ -86,7 +86,7 @@ async function compare(a_file_name: string, b_file_name: string) {
   }
 
   const csvStr = await csv.stringify(res, {
-    delimiter: "\t",
+    delimiter: ",",
     quoted_empty: true,
   });
 

@@ -1,37 +1,37 @@
-miR	Del1338_WT	WT_MF
-mmu-miR-144-3p	6	-7
-mmu-miR-144-5p	6	-6
-mmu-miR-451a	5	-6
-mmu-miR-486b-5p	3	-6
-mmu-miR-486a-5p	3	-6
-mmu-miR-455-5p	2	-2
-mmu-miR-486a-3p	2	-4
-mmu-let-7c-1-3p	4	null
-mmu-miR-99a-5p	2	null
-mmu-miR-147-3p	-2	null
-mmu-miR-134-5p	-2	null
-mmu-miR-96-5p	-2	null
-mmu-miR-147-5p	-2	null
-mmu-miR-370-3p	-2	null
-mmu-miR-541-5p	-2	null
-mmu-miR-300-3p	-2	null
-mmu-miR-409-3p	-2	null
-mmu-miR-183-5p	-2	null
-mmu-miR-379-5p	-2	null
-mmu-miR-182-5p	-2	null
-mmu-miR-434-5p	-2	null
-mmu-miR-466i-3p	-2	null
-mmu-miR-466i-5p	null	4
-mmu-miR-574-5p	null	3
-mmu-miR-669c-5p	null	3
-mmu-miR-1958	null	2
-mmu-miR-467c-3p	null	2
-mmu-miR-1191b-5p	null	-2
-mmu-miR-1668	null	-2
-mmu-miR-1306-5p	null	-2
-mmu-miR-8103	null	-2
-mmu-miR-15a-3p	null	-2
-mmu-miR-486b-3p	null	-3
-mmu-miR-224-5p	null	-3
-mmu-miR-615-3p	null	-3
-mmu-miR-5100	null	-5
+miR,Del1338_WT,WT_MF
+mmu-miR-144-3p,6,-7
+mmu-miR-144-5p,6,-6
+mmu-miR-451a,5,-6
+mmu-miR-486b-5p,3,-6
+mmu-miR-486a-5p,3,-6
+mmu-miR-455-5p,2,-2
+mmu-miR-486a-3p,2,-4
+mmu-let-7c-1-3p,4,null
+mmu-miR-99a-5p,2,null
+mmu-miR-147-3p,-2,null
+mmu-miR-134-5p,-2,null
+mmu-miR-96-5p,-2,null
+mmu-miR-147-5p,-2,null
+mmu-miR-370-3p,-2,null
+mmu-miR-541-5p,-2,null
+mmu-miR-300-3p,-2,null
+mmu-miR-409-3p,-2,null
+mmu-miR-183-5p,-2,null
+mmu-miR-379-5p,-2,null
+mmu-miR-182-5p,-2,null
+mmu-miR-434-5p,-2,null
+mmu-miR-466i-3p,-2,null
+mmu-miR-466i-5p,null,4
+mmu-miR-574-5p,null,3
+mmu-miR-669c-5p,null,3
+mmu-miR-1958,null,2
+mmu-miR-467c-3p,null,2
+mmu-miR-1191b-5p,null,-2
+mmu-miR-1668,null,-2
+mmu-miR-1306-5p,null,-2
+mmu-miR-8103,null,-2
+mmu-miR-15a-3p,null,-2
+mmu-miR-486b-3p,null,-3
+mmu-miR-224-5p,null,-3
+mmu-miR-615-3p,null,-3
+mmu-miR-5100,null,-5
